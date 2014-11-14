@@ -6,6 +6,10 @@
 
 makeCacheMatrix <- function(x = matrix()) {
     invm <- NULL
+    set <- function(y) {
+        x <<- y
+        invm <<- NULL
+    }
     get <- function() x
     setInvmatrix <- function(Invmatrix) invm <<- Invmatrix
     getInvmatrix <- function() invm
@@ -21,7 +25,7 @@ makeCacheMatrix <- function(x = matrix()) {
     cacheSolve <- function(x, ...) {
     invm <- x$getInvmatrix()
     if(!is.null(invm)){
-        message("Cached data found. Getting result... Done.")
+        message("Cached data found.")
         return(invm)
     }
     else {
