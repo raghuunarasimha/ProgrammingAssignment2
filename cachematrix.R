@@ -28,7 +28,7 @@ makeCacheMatrix <- function(x = matrix()) {
         message("No cached data found. Calculating inverse matrix...")
         data <- x$get() # obtains matrix from object x
         invm <- solve(data) # finds inverse matrix
-        x$setInvmatrix(m) # assigns resulting inverse matrix to object x
+        x$setInvmatrix(invm) # assigns resulting inverse matrix to object x
         message("Done.")
         return(invm)
     }
