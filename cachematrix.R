@@ -15,8 +15,22 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## This function does the actual inversing of matrix x. It first checks if the inverse matrix has been found; 
+## if yes, returns the result and quits. If not, the inverse of x is calculated, saved to cached, and returned.
 
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    cacheSolve <- function(x, ...) {
+    invm <- x$getInvmatrix()
+    if(!is.null(invm)){
+        message("Cached data found. Getting result... Done.")
+        return(invm)
+    }
+    else {
+        message("No cached data found. Calculating inverse matrix...")
+        data <- x$get() # obtains matrix from object x
+        invm <- solve(data) # finds inverse matrix
+        x$setInvmatrix(m) # assigns resulting inverse matrix to object x
+        message("Done.")
+        return(invm)
+    }
 }
+
